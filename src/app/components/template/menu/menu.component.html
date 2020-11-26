@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-primary">
+    <a href="#" class="navbar-brand" style="color: aliceblue;"><i class="fa fa-cube"></i>Sistema<b>Ventas</b></a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collection of nav links, forms, and other content for toggling -->
+    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+        <div *ngIf="authService.isAuthenticated()" class="navbar-nav" >
+            <a href="#" class="nav-item nav-link active"><i class="fa fa-home margen" aria-hidden="true"></i>Home</a>
+            <a href="#" class="nav-item nav-link"><i class="fa fa-users margen" aria-hidden="true"></i> Clientes</a>
+            <a href="#" class="nav-item nav-link"><i class="fa fa-cart-plus margen" aria-hidden="true"></i> Ventas</a>
+            <a routerLink="producto" href="#" class="nav-item nav-link"><i class="fa fa-product-hunt margen" aria-hidden="true"></i>Productos</a>
+            <a routerLink="listar" href="#" class="nav-item nav-link"><i class="fa fa-id-card-o margen" aria-hidden="true"></i>Rol</a>
+            <a href="#" class="nav-item nav-link"><i class="fa fa-line-chart margen" aria-hidden="true"></i>Reportes</a>
+        </div>
+        
+        <div class="navbar-nav ml-auto" style="margin-right: 50px;">
+            <a *ngIf="!authService.isAuthenticated()" href="#" data-toggle="dropdown" class="nav-link" [routerLink]="['/login']"><i class="fa fa-user-o"></i> Login</a>
+            <div *ngIf="authService.isAuthenticated()" class="nav-item dropdown">
+                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action">
+                    <i class="fa fa-user-o margen"></i>{{authService.usuario.username}} <b class="caret"></b></a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+                    <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a>
+                    <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
